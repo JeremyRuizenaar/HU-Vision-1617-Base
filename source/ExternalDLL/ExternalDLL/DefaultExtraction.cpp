@@ -12,6 +12,10 @@
 #include "ImageFactory.h"
 
 bool DefaultExtraction::stepExtractEyes(const IntensityImage &image, FeatureMap &features) const {
+	std::cout << std::endl << std::endl;
+	std::cout << "==========Extraction step 1==========" << std::endl;
+	std::cout << "Searching for: exact eyes" << std::endl;
+	std::cout << "================Debug================" << std::endl;
 
 	//Known head parameters.
 	Point2D<double> headLeftPoint = features.getFeature(Feature::FEATURE_HEAD_LEFT_SIDE).getPoints()[0];

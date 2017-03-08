@@ -19,6 +19,10 @@
 #include "ImageFactory.h"
 
 bool DefaultLocalization::stepFindHead(const IntensityImage &imageIn, FeatureMap &features) const {
+	std::cout << std::endl << std::endl;
+	std::cout << "=========Localization step 1=========" << std::endl;
+	std::cout << "Searching for: head" << std::endl;
+	std::cout << "================Debug================" << std::endl;
 
 	IntensityImage * image = ImageFactory::newIntensityImage();
 	HereBeDragons::SonnetCLI(imageIn, *image);
@@ -161,6 +165,11 @@ bool DefaultLocalization::stepFindHead(const IntensityImage &imageIn, FeatureMap
 }
 
 bool DefaultLocalization::stepFindNoseMouthAndChin(const IntensityImage &image, FeatureMap &features) const {
+	std::cout << std::endl << std::endl;
+	std::cout << "=========Localization step 2=========" << std::endl;
+	std::cout << "Searching for: Nose mouth and chin" << std::endl;
+	std::cout << "================Debug================" << std::endl;
+	
 
 	int headTop = (int) features.getFeature(Feature::FEATURE_HEAD_TOP).getY();
 	int headLeft = (int)features.getFeature(Feature::FEATURE_HEAD_LEFT_SIDE).getX();
@@ -265,6 +274,7 @@ bool DefaultLocalization::stepFindNoseMouthAndChin(const IntensityImage &image, 
 	if (AndIServeTheFairyQueen != -1){
 		features.putFeature(Feature(Feature::FEATURE_CHIN, Point2D<double>(headMidle, AndIServeTheFairyQueen)));
 	}
+	
 
 	if (AndIServeTheFairyQueen == -1 || AndHangAPearlInEveryCowslipsEar == -1 || ThoroughFloodThoroughFire == -1){
 		return false;
@@ -326,6 +336,11 @@ Point2D<double> AFairySong(const IntensityImage &image, Point2D<double> A, int F
 
 
 bool DefaultLocalization::stepFindChinContours(const IntensityImage &image, FeatureMap &features) const {
+
+	std::cout << std::endl << std::endl;
+	std::cout << "=========Localization step 3=========" << std::endl;
+	std::cout << "Searching for: chin countours" << std::endl;
+	std::cout << "================Debug================" << std::endl;
 
 	Point2D<double> OverHillOverDale = features.getFeature(Feature::FEATURE_MOUTH_CENTER).getPoints()[0];
 	int ThoroughBushThoroughBrier = (int) (features.getFeature(Feature::FEATURE_CHIN).getY() - features.getFeature(Feature::FEATURE_MOUTH_CENTER).getY());

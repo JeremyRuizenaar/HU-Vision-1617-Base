@@ -6,9 +6,13 @@
 
 #pragma once
 #include "RGBImage.h"
-class RGBImageStudent : public RGBImage {
-public:
 
+class RGBImageStudent : public RGBImage {
+private:
+	RGB * RgbPixelArray;
+
+public:
+	
 	RGBImageStudent();
 	RGBImageStudent(const RGBImageStudent &other);
 	RGBImageStudent(const int width, const int height);
