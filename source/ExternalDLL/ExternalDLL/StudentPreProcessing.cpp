@@ -16,7 +16,6 @@ IntensityImage * StudentPreProcessing::stepToIntensityImage(const RGBImage &imag
 				//int grayValue = (pixel.r + pixel.g + pixel.b) / 3;
 				//int grayValue = (0.3*pixel.r + 0.59*pixel.g + 0.11*pixel.b);     //works
 				int grayValue = pixel.g;                                       //green works
-				//ToIntensity->setPixel(x, y, Intensity(grayValue));
 				IntensityImg->setPixel(x*image.getHeight() + y, Intensity(grayValue));
 			}
 		}

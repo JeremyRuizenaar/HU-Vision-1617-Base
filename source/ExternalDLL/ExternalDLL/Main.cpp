@@ -29,11 +29,13 @@ int main(int argc, char * argv[]) {
 
 
 	RGBImage * input = ImageFactory::newRGBImage();
-	if (!ImageIO::loadImage("C:\\Users\\jer\\Desktop\\images\\testpic\\images3.jpeg", *input)) {
+	//if (!ImageIO::loadImage("C:\\Users\\jer\\Desktop\\images\\testpic\\images3.jpeg", *input)) {
+	if (!ImageIO::loadImage("C:\\GitReposit-Jer\\HU-Vision-1617-Base\\testsets\\Set A\\TestSet Images\\male-2.png", *input)) {
 		std::cout << "Image could not be loaded!" << std::endl;
 		system("pause");
 		return 0;
 	}
+	//ImageIO::showImage(*input);
 	
 
 
@@ -71,6 +73,8 @@ bool executeSteps(DLLExecution * executor) {
 		std::cout << "Pre-processing step 1 failed!" << std::endl;
 		return false;
 	}
+
+	ImageIO::saveIntensityImage(*executor->resultPreProcessingStep1, ImageIO::getDebugFileName("Pre-processing-1.png"));
 
 	if (!executor->executePreProcessingStep2(false)) {
 		std::cout << "Pre-processing step 2 failed!" << std::endl;
