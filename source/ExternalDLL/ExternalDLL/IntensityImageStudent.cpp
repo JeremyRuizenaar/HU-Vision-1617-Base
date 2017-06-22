@@ -5,6 +5,12 @@ IntensityImageStudent::IntensityImageStudent() : IntensityImage() {
 }
 
 IntensityImageStudent::IntensityImageStudent(const IntensityImageStudent &other) : IntensityImage(other.getWidth(), other.getHeight()) {
+	IntensityPixelArray = new Intensity[getWidth() * getHeight()];
+	for (int x = 0; x < getWidth(); x++) {
+		for (int y = 0; y < getHeight(); y++) {
+			IntensityPixelArray[x * getHeight() + y] = other.getPixel(x * getHeight() + y);
+		}
+	}
 }
 
 IntensityImageStudent::IntensityImageStudent(const int width, const int height) : IntensityImage(width, height) {
@@ -38,7 +44,7 @@ void IntensityImageStudent::set(const IntensityImageStudent &other) {
 	IntensityPixelArray = new Intensity[getWidth() * getHeight()];
 	for (int x = 0; x < getWidth(); x++) {
 		for (int y = 0; y < getHeight(); y++) {
-			IntensityPixelArray[x * getHeight() + y] = Intensity(0);
+			IntensityPixelArray[x * getHeight() + y] = other.getPixel(x * getHeight() + y);
 		}
 	}
 }
@@ -49,29 +55,6 @@ void IntensityImageStudent::setPixel(int x, int y, Intensity pixel) {
 
 void IntensityImageStudent::setPixel(int i, Intensity pixel) {
 	IntensityPixelArray[i] = pixel;
-	
-	//int throwError = 0, e = 1 / throwError;
-	/*
-	* TODO: set pixel i in "Row-Major Order"
-	*
-	*
-	* Original 2d image (values):
-	* 9 1 2
-	* 4 3 5
-	* 8 7 8
-	*
-	* 1d representation (i, value):
-	* i		value
-	* 0		9
-	* 1		1
-	* 2		2
-	* 3		4
-	* 4		3
-	* 5		5
-	* 6		8
-	* 7		7
-	* 8		8
-	*/
 }
 
 Intensity IntensityImageStudent::getPixel(int x, int y) const {
